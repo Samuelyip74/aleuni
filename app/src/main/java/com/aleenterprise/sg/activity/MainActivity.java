@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     LocationFragment();
                     return true;
                 case R.id.navigation_notifications:
+                    openConversation();
                     return true;
             }
             return false;
@@ -91,12 +92,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void HomeFragment() {
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.fragment_container, Home.newInstance(android.R.color.holo_red_dark)).commit();
+        manager.beginTransaction().replace(R.id.fragment_container, Home.newInstance(android.R.color.white)).commit();
     }
 
     public void LocationFragment() {
         FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.fragment_container, Location.newInstance(android.R.color.holo_red_dark)).commit();
+        manager.beginTransaction().replace(R.id.fragment_container, Location.newInstance(android.R.color.white)).commit();
+    }
+
+    public void openConversation() {
+        if (RainbowSdk.instance().connection().isConnected()) {
+            openConversationsTabFragment();
+        }
     }
 
     @Override
