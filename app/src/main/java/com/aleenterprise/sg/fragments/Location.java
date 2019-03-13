@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 
 
 import com.aleenterprise.sg.R;
+import com.aleenterprise.sg.services.GeofencingClient;
 import com.aleenterprise.sg.services.IndoorProvider;
 import com.aleenterprise.sg.services.LocationClient;
 import com.mapbox.mapboxsdk.Mapbox;
@@ -104,8 +105,8 @@ public class Location extends Fragment {
         indoor = new IndoorProvider();
 
         // Stellar LBS Positioning SDK
-        //LocationClient loc = new LocationClient(getActivity(), indoor);
-        //GeofencingClient geo = new GeofencingClient(getActivity());
+        LocationClient loc = new LocationClient(getActivity(), indoor);
+        GeofencingClient geo = new GeofencingClient(getActivity());
 
         mapView = (MapView) getView().findViewById(R.id.mapView);
 
